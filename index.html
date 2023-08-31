@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h1>Discover</h1>
+    <div class="discover"></div>
+    <script>
+        // Javascript for dummy elements
+        for (let i = 0; i < 50; i++) {
+            document.getElementsByClassName("discover")[0].innerHTML += `
+                    <div>
+                        <div style="background-color:#${Math.floor(Math.random() * 2 ** 24).toString(16).padStart(6, '0')}"">
+                        </div>
+                    </div>
+                `;
+        }
+    </script>
+</body>
+
+<style>
+    body {
+        background-color: rgb(22, 22, 22);
+        text-align: center;
+        color: white;
+    }
+
+    .discover {
+        max-width: 520px;
+        padding: 8px;
+        background-color: rgb(30, 32, 34);
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+        margin: auto;
+    }
+
+    .discover>div {
+        aspect-ratio: 1;
+        border: 2px rgb(43, 48, 53) solid;
+    }
+
+    .discover>div>div {
+        min-width: 100px;
+        aspect-ratio: 1;
+        transition: 250ms all;
+    }
+
+    .discover>div>div:active {
+        animation: popout 1000ms forwards ease;
+        box-shadow: 2px 2px 5px black;
+    }
+
+    @keyframes popout {
+        30% {
+            position: initial;
+            margin-right: initial;
+            transform: unset;
+        }
+
+        49% {
+            min-width: 100px;
+            max-width: 100px;
+            max-height: 100px;
+        }
+
+        50% {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%);
+        }
+
+        100% {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            margin-right: -50%;
+            transform: translate(-50%, -50%) scale(5);
+        }
+    }
+</style>
+
+</html>
