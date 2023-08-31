@@ -41,7 +41,8 @@
 
     .discover>div {
         aspect-ratio: 1;
-        border: 2px rgb(43, 48, 53) solid;
+        border: 2px rgb(0, 0, 0) solid;
+        user-select: none;
     }
 
     .discover>div>div {
@@ -51,7 +52,7 @@
     }
 
     .discover>div>div:active {
-        animation: popout 1000ms forwards ease;
+        animation: popout 500ms forwards ease;
         box-shadow: 2px 2px 5px black;
     }
 
@@ -68,20 +69,23 @@
             max-height: 100px;
         }
 
-        50% {
-            position: absolute;
+        75% {
+            position: fixed;
             top: 50%;
             left: 50%;
             margin-right: -50%;
             transform: translate(-50%, -50%);
+            width: 100px;
         }
 
         100% {
-            position: absolute;
+            position: fixed;
             top: 50%;
             left: 50%;
             margin-right: -50%;
-            transform: translate(-50%, -50%) scale(5);
+            transform: translate(-50%, -50%);
+            width: 80vh;
+            aspect-ratio: 1;
         }
     }
 </style>
